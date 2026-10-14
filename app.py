@@ -5,6 +5,8 @@
 # registros en el directorio.
 # ------------------------------------------------------
 # comentario comit repositorio
+
+# comentario dos
 from flask import Flask, render_template, request, redirect, url_for, abort
 import mysql.connector
 from mysql.connector import Error
