@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Directorio de Contactos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>📇 Directorio de Contactos</h1>
+
+        <!-- ==================== FORMULARIO ==================== -->
+        <h2>Agregar nuevo contacto</h2>
+        <form action="{{ url_for('agregar') }}" method="POST" class="formulario">
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <button type="submit">Guardar</button>
+        </form>
+
+        <!-- ==================== LISTA DE CONTACTOS ==================== -->
+        <h2>Contactos guardados</h2>
+
+        {% if contactos %}
+        <table class="tabla">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+            </tr>
+            {% for c in contactos %}
+            <tr>
+                <td>{{ c.id }}</td>
+                <td>{{ c.nombre }}</td>
+                <td>{{ c.telefono }}</td>
+                <td>{{ c.correo }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No hay contactos registrados todavía.</p>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
