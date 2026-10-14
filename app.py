@@ -7,6 +7,8 @@
 # comentario comit repositorio
 
 # comentario dos
+
+# comentario tres
 from flask import Flask, render_template, request, redirect, url_for, abort
 import mysql.connector
 from mysql.connector import Error
