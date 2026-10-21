@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Directorio de Contactos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>📇 Directorio de Contactos</h1>
+
+        <!-- ==================== FORMULARIO ==================== -->
+        {% if contacto_editar %}
+        <h2>Modificar contacto #{{ contacto_editar.id }}</h2>
+        <form action="{{ url_for('actualizar', id=contacto_editar.id) }}" method="POST" class="formulario">
+        {% else %}
+        <h2>Agregar nuevo contacto</h2>
+        <form action="{{ url_for('agregar') }}" method="POST" class="formulario">
+        {% endif %}
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required
+                   value="{{ contacto_editar.nombre if contacto_editar else '' }}">
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required
+                   value="{{ contacto_editar.telefono if contacto_editar else '' }}">
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required
+                   value="{{ contacto_editar.correo if contacto_editar else '' }}">
+
+            <button type="submit">{{ 'Actualizar' if contacto_editar else 'Guardar' }}</button>
+
+            {% if contacto_editar %}
+            <a href="{{ url_for('index') }}" class="cancelar">Cancelar</a>
+            {% endif %}
+        </form>
+
+        <!-- ==================== LISTA DE CONTACTOS ==================== -->
+        <h2>Contactos guardados</h2>
+
+        {% if contactos %}
+        <table class="tabla">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+            {% for c in contactos %}
+            <tr {% if contacto_editar and contacto_editar.id == c.id %}class="seleccionado"{% endif %}>
+                <td>{{ c.id }}</td>
+                <td>{{ c.nombre }}</td>
+                <td>{{ c.telefono }}</td>
+                <td>{{ c.correo }}</td>
+                <td>
+                    <div class="acciones">
+                        <a href="{{ url_for('editar', id=c.id) }}" class="btn-editar">✏️ Editar</a>
+
+                        <form action="{{ url_for('eliminar', id=c.id) }}" method="POST" class="form-eliminar"
+                              onsubmit="return confirm('¿Seguro que quieres eliminar este contacto?');">
+                            <button type="submit" class="btn-eliminar">🗑️ Eliminar</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No hay contactos registrados todavía.</p>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

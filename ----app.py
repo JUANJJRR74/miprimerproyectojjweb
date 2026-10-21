@@ -4,6 +4,12 @@
 # de datos y tabla si no existen, y permite dar de alta
 # registros en el directorio.
 # ------------------------------------------------------
+# comentario comit repositorio
+
+# comentario dos
+
+# comentario tres
+# comentario 4 
 
 from flask import Flask, render_template, request, redirect, url_for, abort
 import mysql.connector

@@ -38,6 +38,15 @@
             {% endif %}
         </form>
 
+        <!-- ==================== CONSULTA POR NOMBRE / REPORTE PDF ==================== -->
+        <h2>Consultar por nombre</h2>
+        <form action="{{ url_for('reporte') }}" method="GET" target="_blank" class="busqueda">
+            <input type="text" id="buscar_nombre" name="nombre"
+                   placeholder="Escribe el nombre (o parte) a consultar">
+            <button type="submit">📄 Consultar y generar PDF</button>
+        </form>
+        <p class="ayuda">Si dejas el campo vacío, el reporte incluirá todos los contactos.</p>
+
         <!-- ==================== LISTA DE CONTACTOS ==================== -->
         <h2>Contactos guardados</h2>
 

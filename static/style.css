@@ -142,3 +142,41 @@ h2 {
 .btn-eliminar:hover {
     background-color: #c0392b;
 }
+
+/* ---------- Consulta por nombre / reporte PDF ---------- */
+
+/* Campo de texto y botón en una misma fila */
+.busqueda {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.busqueda input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.busqueda button {
+    padding: 8px 14px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.busqueda button:hover {
+    background-color: #1e8449;
+}
+
+/* Texto de ayuda debajo del buscador */
+.ayuda {
+    font-size: 13px;
+    color: #aaa;
+    margin: 6px 0 0 0;
+}
